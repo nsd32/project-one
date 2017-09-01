@@ -14,31 +14,33 @@ var config = {
   var ref = database.ref('/players');
 
   var playerId = localStorage.userKey;
-  var tableRow = $('<tr>')
-  var score = $('<td>');
-  var thru = $('<td>');
+  
+  
 
-  // ref.on('child_added', function(snap) {
+  ref.on('child_added', function(snap) {
 
-  //   var newPlayer = snap.val().name
+    var newPlayer = snap.val().name
+    var tableRow = $('<tr>')
     
     
-    
-  //   $('#tbody').append(tableRow);
-  //   tableRow.append('<td>' + newPlayer);
-  //   // tableRow.append('<td id="score"');
-  //   // tableRow.append('<td id="hole"');
+    $('#tbody').append(tableRow);
+    tableRow.append('<td>' + newPlayer);
+    // tableRow.append('<td id="score"');
+    // tableRow.append('<td id="hole"');
 
     
-  //   // tableRow.append('<td>' + playerScore)
+    // tableRow.append('<td>' + playerScore)
 
     
 
-  // })
+  })
 
 
   database.ref('/players/' + playerId).on('value', function(snap) {
         
+        var tableRow = $('<tr>')
+        var score = $('<td>');
+  		var thru = $('<td>');
         var playerName = snap.val().name;
         var holeOne = snap.val().holeOne;
         var holeTwo = snap.val().holeTwo;
