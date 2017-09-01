@@ -19,11 +19,21 @@ var config = {
 
   ref.on('child_added', function(snap) {
 
+  	var holeOne = snap.val().holeOne;
+  	var holeTwo = snap.val().holeTwo;
+  	var holeThree = snap.val().holeThree;
+  	var holeFour = snap.val().holeFour;
+  	var holeFive = snap.val().holeFive;
+  	var holeSix = snap.val().holeSix;
+  	var holeSeven = snap.val().holeSeven;
+  	var holeEight = snap.val().holeEight;
+  	var holeNine = snap.val().holeNine;
+
     var newPlayer = snap.val().name
     var score = $('<td>');
     var thru = $('<td>');
     var tableRow = $('<tr>');
-    score.text(snap.val().holeOne);
+    score.text(holeOne + holeTwo + holeThree + holeFour + holeFive + holeSix + holeSeven + holeEight + holeNine);
     thru.text(snap.val().holeNumber);
     
     
