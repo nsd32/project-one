@@ -51,10 +51,10 @@ var config = {
 
   })
 
-  ref.on('child_changed', function(snap) {
+  // ref.on('child_changed', function(snap) {
 
-  	console.log(snap.val())
-  })
+  // 	console.log(snap.val())
+  // })
 
 
   // database.ref('/players/' + playerId).on('value', function(snap) {
