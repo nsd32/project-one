@@ -30,8 +30,8 @@ var config = {
   	var holeNine = snap.val().holeNine;
 
     var newPlayer = snap.val().name
-    var score = $('<td>');
-    var thru = $('<td>');
+    var score = $('<td id="score">');
+    var thru = $('<td id="thru">');
     var tableRow = $('<tr>');
     score.text(holeOne + holeTwo + holeThree + holeFour + holeFive + holeSix + holeSeven + holeEight + holeNine);
     thru.text(snap.val().holeNumber);
@@ -51,10 +51,22 @@ var config = {
 
   })
 
-  // ref.on('child_changed', function(snap) {
+  ref.on('child_changed', function(snap) {
 
-  // 	console.log(snap.val())
-  // })
+  	console.log(snap.val())
+  	var holeOne = snap.val().holeOne;
+  	var holeTwo = snap.val().holeTwo;
+  	var holeThree = snap.val().holeThree;
+  	var holeFour = snap.val().holeFour;
+  	var holeFive = snap.val().holeFive;
+  	var holeSix = snap.val().holeSix;
+  	var holeSeven = snap.val().holeSeven;
+  	var holeEight = snap.val().holeEight;
+  	var holeNine = snap.val().holeNine;
+
+  	var score = holeOne + holeTwo + holeThree + holeFour + holeFive + holeSix + holeSeven + holeEight + holeNine;
+  	$('#score').text(score)
+  })
 
 
   // database.ref('/players/' + playerId).on('value', function(snap) {

@@ -67,9 +67,9 @@ var config = {
       
         
      $('#score').text(totalScore)
-     $('#hole').text(snap.val().holeNumber)
+     $('#hole-number').text(snap.val().holeNumber);
      var holeNumber = snap.val().holeNumber;
-
+     console.log(holeNumber)
 
 	  $('#submit').click(function() {
 
@@ -183,28 +183,28 @@ var config = {
 
   // }
 
-  ref.on('child_added', function(snap) {
+  // ref.on('child_added', function(snap) {
 
-    var newPlayer = snap.val().name
+  //   var newPlayer = snap.val().name
     
     
-    var tableRow = $('<tr>')
-    $('#tbody').append(tableRow);
-    tableRow.append('<td>' + newPlayer)
-    tableRow.append('<td id="score">' + snap.val().holeOne)
-    tableRow.append('<td id="hole">' + 0) 
-    // tableRow.append('<td>' + playerScore)
+  //   var tableRow = $('<tr>')
+  //   $('#tbody').append(tableRow);
+  //   tableRow.append('<td>' + newPlayer)
+  //   tableRow.append('<td id="score">' + snap.val().holeOne)
+  //   tableRow.append('<td id="hole">' + 0) 
+  //   // tableRow.append('<td>' + playerScore)
 
     
 
-  })
+  // })
 
-  database.ref('/players/' + playerId).on('value', function(snap) {
-    var totalScore = snap.val().holeOne 
-    $('#total-score').text(totalScore)
-    $('#hole-number').text(snap.val().holeNumber)
+  // database.ref('/players/' + playerId).on('value', function(snap) {
+  //   var totalScore = snap.val().holeOne 
+  //   $('#total-score').text(totalScore)
+  //   $('#hole-number').text(snap.val().holeNumber)
     
-  });
+  // });
 
   $('#leaderboard').click(function() {
 
