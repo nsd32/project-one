@@ -65,11 +65,9 @@ var config = {
 
   database.ref('/players/' + playerId).on('value', function(snap) {
       
-        
-     $('#score').text(totalScore)
-     $('#hole-number').text(snap.val().holeNumber);
-     var holeNumber = snap.val().holeNumber;
-     console.log(holeNumber)
+      var holeNumber = snap.val().holeNumber;
+      console.log(holeNumber)
+      $('#hole-number').text(holeNumber);
 
 	  $('#submit').click(function() {
 
@@ -166,7 +164,9 @@ var config = {
 	    // totalScore += count;
 	    // scoreDisplay.text(totalScore);
 
-	    
+	    $('#score').text(totalScore)
+        
+        
 	    
 	    count = 0;
 
