@@ -19,11 +19,18 @@ $(document).ready(function() {
   var ref = database.ref('/players');
   var playerKey;
   var holes = 0;
-  var holeNumber = 1
+  localStorage.setItem('holeNumber', 1)
   var playerName = $('#player-name');
-  var totalScore = 0;
   var scoreDisplay = $('#total-score');
+  
+  var totalScore = 0;
 
+  scoreDisplay.text(localStorage.holeNumber)
+  
+  
+  var playerId = localStorage.userKey;
+  
+  console.log(playerId)
   // -Ksl05fwsmjuMTiaY8X1
 
   $('#add-player').click(function() {
@@ -39,18 +46,59 @@ $(document).ready(function() {
       holeSeven: 0,
       holeEight: 0,
       holeNine: 0,
-      totalScore: totalScore += count
+      holeNumber: 1
     });
-
     // grabbing unique id from push method above on line 27
-    playerKey = newPostRef.key;
+    localStorage.setItem('userKey', newPostRef.key);
+    playerId = localStorage.userKey;
     // storing unique id in local storage for access later
-    localStorage.setItem('userKey', playerKey);
+    
+    console.log(playerId);
 
-    console.log(playerKey);
+    $(this).hide();
+
+    window.location.href = 'game.html';
     // -Ksl0zBnDxzbM-9XsOh3
 
   })
+
+  // if (gameState === 'joined') {
+
+  //   database.ref('/players/' + playerId).on('value', function(snap) {
+      
+  //       var totalScore = snap.val().holeOne + snap.val().holeTwo + snap.val().holeThree + snap.val().holeFour + snap.val().holeFive + snap.val().holeSix + snap.val().holeSeven + snap.val().holeEight + snap.val().holeNine;
+  //       $('#score').text(totalScore)
+  //       $('#hole').text(snap.val().holeNumber)
+      
+  //   }, function(errorObject) {
+  //     console.log('the read failed ' + errorObject.code)
+  //   });
+
+  // }
+
+  ref.on('child_added', function(snap) {
+
+    var newPlayer = snap.val().name
+    
+    
+    var tableRow = $('<tr>')
+    $('#tbody').append(tableRow);
+    tableRow.append('<td>' + newPlayer)
+    tableRow.append('<td id="score">' + snap.val().holeOne)
+    tableRow.append('<td id="hole">' + 0) 
+    // tableRow.append('<td>' + playerScore)
+
+    
+
+  })
+
+  // database.ref('/players/' + playerId).on('value', function(snap) {
+  //   var totalScore = snap.val().holeOne 
+  //   $('#total-score').text(totalScore)
+    
+  // });
+
+  
 
   $('#plus').click(function() {
 
@@ -72,84 +120,113 @@ $(document).ready(function() {
   $('#submit').click(function() {
 
     // defining path to update user's score with unique id from local storage
-    var updatePlayer = database.ref('/players/' + localStorage.userKey);
     
     // updating player scores based on what hole they are on
-    switch (holeNumber) {
-      case 1:
-        updatePlayer.update({
-          holeOne: count,
-          totalScore: totalScore += count
-        })
-        break;
+    
+      switch (localStorage.holeNumber) {
+        case 1:
+          database.ref('/players/' + playerId).update({
+            holeOne: count,
+            
+          })
+          
+          break;
 
-      case 2:
-        updatePlayer.update({
-          holeTwo: count,
-        })
-        break;
+        case 2:
+          database.ref('/players/' + playerId).update({
+            holeTwo: count,
+            
+          })
+          
+          break;
 
-      case 3:
-        updatePlayer.update({
-          holeThree: count,
-        })
-        break;
+        case 3:
+          database.ref('/players/' + playerId).update({
+            holeThree: count,
+            
+          })
+          
+          break;
 
-      case 4:
-        updatePlayer.update({
-          holeFour: count,
-        })
-        break;
+        case 4:
+          database.ref('/players/' + playerId).update({
+            holeFour: count,
+            
+          })
+          
+          break;
 
-      case 5:
-        updatePlayer.update({
-          holeFive: count,
-        })
-        break;
+        case 5:
+          database.ref('/players/' + playerId).update({
+            holeFive: count,
+            
+          })
+          
+          break;
 
-      case 6:
-        updatePlayer.update({
-          holeSix: count,
-        })
-        break;
+        case 6:
+          database.ref('/players/' + playerId).update({
+            holeSix: count,
+            
+          })
+          
+          break;
 
-      case 7:
-        updatePlayer.update({
-          holeSeven: count,
-        })
-        break;
+        case 7:
+          database.ref('/players/' + playerId).update({
+            holeSeven: count,
+            
+          })
+          
+          break;
 
-      case 8:
-        updatePlayer.update({
-          holeEight: count,
-        })
-        break;
+        case 8:
+          database.ref('/players/' + playerId).update({
+            holeEight: count,
+            
+          })
+          
+          break;
 
-      case 9:
-        updatePlayer.update({
-          holeNine: count,
-        })
-        break;
+        case 9:
+          database.ref('/players/' + playerId).update({
+            holeNine: count,
+            
+          })
+          
+          break;
 
-    }
+      }
+    
 
-    updatePlayer.on('value', function(snap) {
-      var playerUpdate = snap.val()
-      scoreDisplay.text(playerUpdate.totalScore);
-    })
+      $('#hole-number').text(localStorage.holeNumber)
+      $('#hole').text(localStorage.holeNumber - 1)
+    
+    // database.ref('/players/' + playerId).on('value', function(snap) {
 
-    totalScore += count;
+    //   $('#hole-number').text(snap.val().holeNumber + 1)
+    //   $('#hole-number').text(snap.val().holeNumber + 1)
+
+    // })
+    // totalScore += count;
     // scoreDisplay.text(totalScore);
 
-    holeNumber++
+    localStorage.setItem('holeNumber', localStorage.getItem('holeNumber')++)
+    console.log(localStorage.holeNumber)
     count = 0;
 
     $('#count').text(count);
-    $('#hole-number').text(holeNumber);
+    // $('#hole-number').text(holeNumber);
 
   })
 
+  $('#end-game').click(function() {
 
+    localStorage.removeItem('userKey');
+    console.log(localStorage.userKey);
+    $('#add-player').show();
+
+  })
 
 
 
