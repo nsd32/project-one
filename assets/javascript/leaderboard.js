@@ -20,11 +20,17 @@ var config = {
   ref.on('child_added', function(snap) {
 
     var newPlayer = snap.val().name
-    var tableRow = $('<tr>')
+    var score = $('<td>');
+    var thru = $('<td>');
+    var tableRow = $('<tr>');
+    score.text(snap.val().holeOne);
+    thru.text(snap.val().holeNumber);
     
     
     $('#tbody').append(tableRow);
     tableRow.append('<td>' + newPlayer);
+    tableRow.append(score);
+    tableRow.append(thru);
     // tableRow.append('<td id="score"');
     // tableRow.append('<td id="hole"');
 
@@ -35,30 +41,35 @@ var config = {
 
   })
 
+  ref.on('child_changed', function(snap) {
 
-  database.ref('/players/' + playerId).on('value', function(snap) {
+  	console.log(snap.val())
+  })
+
+
+  // database.ref('/players/' + playerId).on('value', function(snap) {
         
-        var tableRow = $('<tr>')
-        var score = $('<td>');
-  		var thru = $('<td>');
-        var playerName = snap.val().name;
-        var holeOne = snap.val().holeOne;
-        var holeTwo = snap.val().holeTwo;
-        var holeNumber = snap.val().holeNumber - 1;
-        console.log(holeNumber);
-        score.text(holeOne + holeTwo);
-        thru.text(holeNumber)
-        $('#tbody').append(tableRow);
-        tableRow.append(playerName)
-        tableRow.append(score);
-        tableRow.append(thru);
+  //       var tableRow = $('<tr>')
+  //       var score = $('<td>');
+  // 		var thru = $('<td>');
+  //       var playerName = snap.val().name;
+  //       var holeOne = snap.val().holeOne;
+  //       var holeTwo = snap.val().holeTwo;
+  //       var holeNumber = snap.val().holeNumber - 1;
+  //       console.log(holeNumber);
+  //       score.text(holeOne + holeTwo);
+  //       thru.text(holeNumber)
+  //       $('#tbody').append(tableRow);
+  //       tableRow.append(playerName)
+  //       tableRow.append(score);
+  //       tableRow.append(thru);
         
-        // $('#score').text(totalScore)
+  //       // $('#score').text(totalScore)
         
       
-    }, function(errorObject) {
-      console.log('the read failed ' + errorObject.code)
-    });
+  //   }, function(errorObject) {
+  //     console.log('the read failed ' + errorObject.code)
+  //   });
 
 
 
