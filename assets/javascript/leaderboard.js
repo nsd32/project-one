@@ -34,7 +34,7 @@ var config = {
     var thru = $('<td id="thru">');
     var tableRow = $('<tr>');
     score.text(holeOne + holeTwo + holeThree + holeFour + holeFive + holeSix + holeSeven + holeEight + holeNine);
-    thru.text(snap.val().holeNumber);
+    thru.text(snap.val().holeNumber - 1);
     
     
     $('#tbody').append(tableRow);
