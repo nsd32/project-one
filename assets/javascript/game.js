@@ -19,13 +19,14 @@ var config = {
   var playerKey;
   var holes = 0;
   
-  localStorage.setItem('holeNumber', 1)
-  var playerName = $('#player-name');
-  var scoreDisplay = $('#total-score');
   
-  var totalScore = 0;
+  // localStorage.setItem('holeNumber', 1)
+  // var playerName = $('#player-name');
+  // var scoreDisplay = $('#total-score');
+  
+  // var totalScore = 0;
 
-  scoreDisplay.text(localStorage.holeNumber)
+  // scoreDisplay.text(localStorage.holeNumber)
   
   
   var playerId = localStorage.userKey;
@@ -36,16 +37,20 @@ var config = {
   $('#add-player').click(function() {
 
     newPostRef = ref.push({
-      name: 'nick',
-      holeOne: 0,
-      holeTwo: 0,
-      holeThree: 0,
-      holeFour: 0,
-      holeFive: 0,
-      holeSix: 0,
-      holeSeven: 0,
-      holeEight: 0,
-      holeNine: 0
+      // name: 'nick',
+      // holeOne: 0,
+      // holeTwo: 0,
+      // holeThree: 0,
+      // holeFour: 0,
+      // holeFive: 0,
+      // holeSix: 0,
+      // holeSeven: 0,
+      // holeEight: 0,
+      // holeNine: 0
+      // hole1: {
+      // 	number: 1,
+      // 	score: 0
+      // }
     });
     // grabbing unique id from push method above on line 27
     localStorage.setItem('userKey', newPostRef.key);
@@ -70,80 +75,80 @@ var config = {
       $('#hole-number').text(holeNumber);
 
 	  $('#submit').click(function() {
-
+	  	location.reload()
 	    // defining path to update user's score with unique id from local storage
-	    
+	    var score = Number($('#score').val());
 	    // updating player scores based on what hole they are on
 	    
 	      switch (holeNumber) {
-	        case 1:
+	        case Number(1):
 	          database.ref('/players/' + playerId).update({
-	            holeOne: count,
-	            holeNumber: 2
+	            holeOne: score,
+	            holeNumber: holeNumber + 1
 	            
 	          })
 	          
 	          break;
 
-	        case 2:
+	        case Number(2):
 	          database.ref('/players/' + playerId).update({
-	            holeTwo: count,
-	            holeNumber: 3
+	            holeTwo: score,
+	            holeNumber: holeNumber + 1
 	          })
 	          
 	          break;
 
-	        case 3:
+	        case Number(3):
 	          database.ref('/players/' + playerId).update({
-	            holeThree: count,
-	            holeNumber: 4
+	            holeThree: score,
+	            holeNumber: holeNumber + 1
 	          })
 	          
 	          break;
 
-	        case 4:
+	        case Number(4):
 	          database.ref('/players/' + playerId).update({
-	            holeFour: count,
+	            holeFour: score,
 	            holeNumber: 5
 	          })
 	          
 	          break;
 
-	        case 5:
+	        case Number(5):
 	          database.ref('/players/' + playerId).update({
-	            holeFive: count,
+	            holeFive: score,
 	            holeNumber: 6
 	          })
 	          
 	          break;
 
-	        case 6:
+	        case Number(6):
 	          database.ref('/players/' + playerId).update({
-	            holeSix: count,
+	            holeSix: score,
 	            holeNumber: 7
 	          })
 	          
 	          break;
 
-	        case 7:
+	        case Number(7):
 	          database.ref('/players/' + playerId).update({
-	            holeSeven: count,
+	            holeSeven: score,
 	            holeNumber: 8
 	          })
 	          
 	          break;
 
-	        case 8:
+	        case Number(8):
 	          database.ref('/players/' + playerId).update({
-	            holeEight: count,
+	            holeEight: score,
 	            holeNumber: 9
 	          })
 	          
 	          break;
 
-	        case 9:
+	        case Number(9):
 	          database.ref('/players/' + playerId).update({
-	            holeNine: count,
+	            holeNine: score,
 	            holeNumber: 10
 	          })
 	          
@@ -164,13 +169,13 @@ var config = {
 	    // totalScore += count;
 	    // scoreDisplay.text(totalScore);
 
-	    $('#score').text(totalScore)
+	    // $('#score').text(totalScore)
         
-        
+        var score = Number($('#score').val(''));
 	    
-	    count = 0;
-
-	    $('#count').text(count);
+	    // count = 0;
+	    
+	    // $('#count').text(count);
 	    // $('#hole-number').text(holeNumber);
 
 	  })

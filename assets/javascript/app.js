@@ -117,108 +117,108 @@ $(document).ready(function() {
 
 
 
-  $('#submit').click(function() {
+  // $('#submit').click(function() {
 
-    // defining path to update user's score with unique id from local storage
+  //   // defining path to update user's score with unique id from local storage
     
-    // updating player scores based on what hole they are on
+  //   // updating player scores based on what hole they are on
     
-      switch (localStorage.holeNumber) {
-        case 1:
-          database.ref('/players/' + playerId).update({
-            holeOne: count,
+  //     switch (localStorage.holeNumber) {
+  //       case 1:
+  //         database.ref('/players/' + playerId).update({
+  //           holeOne: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 2:
-          database.ref('/players/' + playerId).update({
-            holeTwo: count,
+  //       case 2:
+  //         database.ref('/players/' + playerId).update({
+  //           holeTwo: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 3:
-          database.ref('/players/' + playerId).update({
-            holeThree: count,
+  //       case 3:
+  //         database.ref('/players/' + playerId).update({
+  //           holeThree: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 4:
-          database.ref('/players/' + playerId).update({
-            holeFour: count,
+  //       case 4:
+  //         database.ref('/players/' + playerId).update({
+  //           holeFour: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 5:
-          database.ref('/players/' + playerId).update({
-            holeFive: count,
+  //       case 5:
+  //         database.ref('/players/' + playerId).update({
+  //           holeFive: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 6:
-          database.ref('/players/' + playerId).update({
-            holeSix: count,
+  //       case 6:
+  //         database.ref('/players/' + playerId).update({
+  //           holeSix: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 7:
-          database.ref('/players/' + playerId).update({
-            holeSeven: count,
+  //       case 7:
+  //         database.ref('/players/' + playerId).update({
+  //           holeSeven: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 8:
-          database.ref('/players/' + playerId).update({
-            holeEight: count,
+  //       case 8:
+  //         database.ref('/players/' + playerId).update({
+  //           holeEight: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-        case 9:
-          database.ref('/players/' + playerId).update({
-            holeNine: count,
+  //       case 9:
+  //         database.ref('/players/' + playerId).update({
+  //           holeNine: count,
             
-          })
+  //         })
           
-          break;
+  //         break;
 
-      }
+  //     }
     
 
-      $('#hole-number').text(localStorage.holeNumber)
-      $('#hole').text(localStorage.holeNumber - 1)
+  //     $('#hole-number').text(localStorage.holeNumber)
+  //     $('#hole').text(localStorage.holeNumber - 1)
     
-    // database.ref('/players/' + playerId).on('value', function(snap) {
+  //   // database.ref('/players/' + playerId).on('value', function(snap) {
 
-    //   $('#hole-number').text(snap.val().holeNumber + 1)
-    //   $('#hole-number').text(snap.val().holeNumber + 1)
+  //   //   $('#hole-number').text(snap.val().holeNumber + 1)
+  //   //   $('#hole-number').text(snap.val().holeNumber + 1)
 
-    // })
-    // totalScore += count;
-    // scoreDisplay.text(totalScore);
+  //   // })
+  //   // totalScore += count;
+  //   // scoreDisplay.text(totalScore);
 
-    localStorage.setItem('holeNumber', localStorage.getItem('holeNumber')++)
-    console.log(localStorage.holeNumber)
-    count = 0;
+  //   localStorage.setItem('holeNumber', localStorage.getItem('holeNumber')++)
+  //   console.log(localStorage.holeNumber)
+  //   count = 0;
 
-    $('#count').text(count);
-    // $('#hole-number').text(holeNumber);
+  //   $('#count').text(count);
+  //   // $('#hole-number').text(holeNumber);
 
-  })
+  // })
 
   $('#end-game').click(function() {
 

@@ -8,18 +8,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 
   </head>
   <body>
 
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
-        <div class="col-sm-4">
-          <br />
+        <div class="col-sm-12 text-center" id="card-column">
+          
+          <div class="card" id="scorecard" style="width: 20rem;">
+            <div class="card-header">
+              <h5 class="card-title">Hole <span id="hole-number"></span></h5>
+            </div>
+            <input id="score" rows="1" cols="1" type="number"></input>
+            <div class="card-body">
+              
+              <button type="button" id="prev" class="btn btn-danger">Previous</button>
+              <button type="button" id="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div><br /><br />
+
+          <button type="button" id="leaderboard" class="btn btn-success">Leaderboard</button>
+          <!-- <br />
           <h1 id="name"></h1><br />
-          <!-- <h1>Total Score: <span id="total-score"></span></h1><br />
-          <h1>Thru: <span id="thru"></span></h1><br /> -->
+          
           <h1>Hole: <span id="hole-number"></span></h1><br /><br />
           <button type="button" id="plus" class="btn">+</button>
           
@@ -33,11 +48,11 @@
             <ul id="player-list">
             
             </ul>
-          </h1>
-        </div>
+          </h1> -->
+        </div> <!-- column -->
         
-      </div>
-    </div>
+      </div> <!-- row -->
+    </div> <!-- container -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
