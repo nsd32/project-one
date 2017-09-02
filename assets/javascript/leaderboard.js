@@ -18,7 +18,7 @@ var config = {
   
 
   ref.on('child_added', function(snap) {
-  	location.reload();
+  	
   	var holeOne = snap.val().holeOne;
   	var holeTwo = snap.val().holeTwo;
   	var holeThree = snap.val().holeThree;
